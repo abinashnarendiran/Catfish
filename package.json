@@ -1,0 +1,18 @@
+{
+  "name": "Catfish",
+  "version": "1.0.0",
+  "description": "Dating Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "author": "Catfish Team",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.11",
+    "nodemon": "^1.17.2",
+    "pug": "^2.0.3"
+  }
+}
