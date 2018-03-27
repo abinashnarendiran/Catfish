@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+  h1 #{title}
+  
+  //img(src = "https://www.iconshock.com/image/Stroke/Animals/catfish", align = "center")
+  div= button1
+    br
+    button(type = "button", class='btn btn-primary btn-md', id = "Facebook") Facebook
+  div= button2
+    br
+    a(href='/login/')
+      button(type = "button", class='btn btn-primary btn-md', id = "Email") Email
+  div= button3
+    br
+    a(href = '/register/')
+      button(type = "button", class='btn btn-primary btn-md', id = "Sign Up") Sign Up
+
+
+        

@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title Catfish
+    link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel="stylesheet", href="/style/main.css")
+    
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      a.navbar-brand()
+        img(src= "https://trello-attachments.s3.amazonaws.com/5a70e04f2a2a090a7bee98c5/5a71fec800d5395162256f81/3df96369ce69d5d9eaed0e0001a5f1b0/image.png", height= "50px")
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarsExampleDefault.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/')
+              | Home 
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='/mainpage/') MainPage 
+          
+    .container
+      block content
+      br
+      
+      footer
+          hr
+          p Copyright &copy; 2017
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')

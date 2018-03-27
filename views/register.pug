@@ -1,0 +1,67 @@
+extends layout
+block content
+  link(rel="stylesheet",
+       href="/style/main.css")
+  h1= title
+
+  div= errorMessage
+
+  form(action='/processRegistration/',
+       method='post',
+       class='form-horizontal')
+       
+       
+       
+    label(class='control-label col-md-2', for='firstName') First Name:
+    div(class='col-md-3 form-group')
+      input(type='text',
+            id='firstName',
+            name='firstName',
+            placeholder='First Name',
+            class='form-control')  
+            
+    label(class='control-label col-md-2', for='lastName') Last Name:
+    div(class='col-md-3 form-group')
+      input(type='text',
+          id='lastName',
+          name='lastName',
+          placeholder='Last Name',
+          class='form-control')
+            
+               
+    label(class='control-label col-md-2', for='email') E-Mail:
+    div(class='col-md-3 form-group')
+      input(type='text',
+          id='email',
+          name='email',
+          placeholder='E-Mail',
+          class='form-control')
+          
+    label(class='control-label col-md-2', for='pwd') Password:
+    div(class='col-md-3 form-group')
+      input(type='password',
+            id='pwd',
+            name='pwd',
+            placeholder='Password',
+            class='form-control')
+            
+  
+    label(class='control-label col-md-2', for='birthDate') Birth Date:
+    div(class='col-md-3 form-group')
+      input(type='Date',
+            id='birthDate',
+            name='birthDate',
+            class='form-control')
+    
+    label(class='control-label col-md-2', for='bio') Bio:
+    div(class='col-md-3 form-group')
+      textarea(rows="4",
+              cols="50",
+              type='text',
+              id='bio',
+              name='bio',
+              class='form-control')      
+            
+
+    div(class='col-md-offset-1 col-md-1')
+      button(type='submit', class='btn btn-primary') Sign Up
