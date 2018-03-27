@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 #{title}
+  form.form-horizontal(action='/contact' id='contact-form' method='POST' role="form")
+  .form-group
+      label.control-label.col-sm-2(for='name') Name:
+      .col-sm-10
+        input#name.form-control(type='text', placeholder='Enter name')
+  .form-group
+    label.control-label.col-sm-2(for='email') Email:
+    .col-sm-10
+      input#email.form-control(type='email', placeholder='Enter email')
+  .form-group
+    label.control-label.col-sm-2(for='name') Message:
+    .col-sm-10
+      textarea#message.form-control(type='text', placeholder='Enter message')
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      button.btn.btn-default(type='submit') Submit
