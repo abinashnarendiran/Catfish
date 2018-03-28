@@ -133,8 +133,8 @@ app.post('/processLogin/', function(request, response) {
   User.find({email: email}).then(function(results) {
     if (results.length == 0) {
       // Login failed
-      response.redirect(response.render('login', {title: 'Please Log In',
-                                        errorMessage: 'Password or Email is incorrect'}));
+      response.render('login', {title: 'Please Log In',
+                                          errorMessage: 'Email does not exist'});
     }
     else {
       // login success
@@ -146,8 +146,8 @@ app.post('/processLogin/', function(request, response) {
       }
 
       else{
-        response.redirect(response.render('login', {title: 'Please Log In',
-                                            errorMessage: 'Password or Email is incorrect'}));
+        response.render('login', {title: 'Please Log In',
+                                            errorMessage: 'Password Incorrect'});
       }
     }
   });
