@@ -147,7 +147,7 @@ app.post('/processLogin/', function(request, response) {
 
       else{
         response.redirect(response.render('login', {title: 'Please Log In',
-                                          errorMessage: 'Password or Email is incorrect'}));
+                                            errorMessage: 'Password or Email is incorrect'}));
       }
     }
   });
