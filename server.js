@@ -76,6 +76,21 @@ app.get('/mainpage/', function(req,res){
   });
 });
 
+// Add Route
+app.get('/about/', function(req,res){
+  res.render('about', {
+    title:'About'
+  });
+});
+
+// Add Route
+app.get('/contact/', function(req,res){
+  res.render('contact', {
+    title:'Contact'
+  });
+});
+
+
 app.get('/register/', function(request, response) {
   response.render('register', {title: 'Register'});
 });
