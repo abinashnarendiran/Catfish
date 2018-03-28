@@ -3,8 +3,6 @@ block content
   link(rel="stylesheet",
        href="/style/main.css")
   h1= title
-
-  div= errorMessage
   
   form(action='/processLogin/',
        method='post',
@@ -30,4 +28,5 @@ block content
     div(class='col-md-offset-1 col-md-1')
       button(type='submit', class='btn btn-primary') Log In
       
+    br
     div= errorMessage
