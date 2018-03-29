@@ -45,7 +45,15 @@ block content
             placeholder='Password',
             class='form-control')
             
-  
+    label(class='control-label col-md-2', for='gender') Gender:
+    div(class='col-md-3 form-group')
+       select(id='gender', name='gender' , class='form-control')
+         option(value = "Male", name="gender") Male
+         option(value = "Female", name="gender") Female
+           
+        
+      
+          
     label(class='control-label col-md-2', for='birthDate') Birth Date:
     div(class='col-md-3 form-group')
       input(type='Date',

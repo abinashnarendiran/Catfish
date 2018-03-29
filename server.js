@@ -58,6 +58,7 @@ var userSchema = new Schema({
   email: String,
   hashedPassword: String,
   birthDate: String,
+  gender: String,
   bio: String
 }, {collection: 'users'});
 var User = mongoose.model('user', userSchema);
@@ -102,14 +103,16 @@ app.post('/processRegistration/', function(request, response) {
   var password = request.body.pwd;
   var hashedPassword = bcrypt.hashSync(password);
   var bio = request.body.bio;
+  var gender = request.body.gender;
   var birthDatewithTime =  new Date(request.body.birthDate);
   var birth = birthDatewithTime.toDateString();
   var newUser = new User({firstName: firstName,
                           lastName: lastName,
                           email: email,
                           hashedPassword: hashedPassword,
-                          bio: bio,
-                          birthDate: birth});
+                          gender: gender,
+                          birthDate: birth,
+                          bio: bio});
   newUser.save(function(error) {
     if (error) {
       console.log('Unable to register: ' + error);
