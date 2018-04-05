@@ -1,19 +1,19 @@
 extends layout
 block content
-  link(rel="stylesheet",
-       href="/style/main.css")
-  h1= title
 
-  div= errorMessage
+  h1(align="center")=title
+
+  div
+    p(style="font-size:24px;")= errorMessage
+  br
 
   form(action='/processRegistration/',
        method='post',
        class='form-horizontal')
        
        
-       
     label(class='control-label col-md-2', for='firstName') First Name:
-    div(class='col-md-3 form-group')
+    div(class='col-sm-10 form-group')
       input(type='text',
             id='firstName',
             name='firstName',
@@ -21,7 +21,7 @@ block content
             class='form-control')  
             
     label(class='control-label col-md-2', for='lastName') Last Name:
-    div(class='col-md-3 form-group')
+    div(class='col-sm-10 form-group')
       input(type='text',
           id='lastName',
           name='lastName',
@@ -30,7 +30,7 @@ block content
             
                
     label(class='control-label col-md-2', for='email') E-Mail:
-    div(class='col-md-3 form-group')
+    div(class='col-sm-10 form-group')
       input(type='text',
           id='email',
           name='email',
@@ -38,7 +38,7 @@ block content
           class='form-control')
           
     label(class='control-label col-md-2', for='pwd') Password:
-    div(class='col-md-3 form-group')
+    div(class='col-sm-10 form-group')
       input(type='password',
             id='pwd',
             name='pwd',
@@ -46,7 +46,7 @@ block content
             class='form-control')
             
     label(class='control-label col-md-2', for='gender') Gender:
-    div(class='col-md-3 form-group')
+    div(class='col-sm-10 form-group')
        select(id='gender', name='gender' , class='form-control')
          option(value = "Male", name="gender") Male
          option(value = "Female", name="gender") Female
@@ -55,21 +55,38 @@ block content
       
           
     label(class='control-label col-md-2', for='birthDate') Birth Date:
-    div(class='col-md-3 form-group')
+    div(class='col-sm-10 form-group')
       input(type='Date',
             id='birthDate',
             name='birthDate',
             class='form-control')
     
+    
+    label(class='control-label col-md-2', for='school') School:
+    div(class='col-sm-10 form-group')
+      input(type='text',
+            id='school',
+            name='school',
+            placeholder='School',
+            class='form-control')       
+    label(class='control-label col-md-2', for='location') Location:
+    div(class='col-sm-10 form-group')
+      input(type='text',
+            id='location',
+            name='location',
+            placeholder='Location',
+            class='form-control')   
+    
     label(class='control-label col-md-2', for='bio') Bio:
-    div(class='col-md-3 form-group')
+    div(class='col-md-6 form-group')
       textarea(rows="4",
-              cols="50",
+              cols="30",
               type='text',
               id='bio',
               name='bio',
-              class='form-control')      
-            
+              class='form-control',
+              maxlength="150",)      
+    
 
     div(class='col-md-offset-1 col-md-1')
       button(type='submit', class='btn btn-primary') Sign Up

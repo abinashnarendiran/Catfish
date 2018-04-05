@@ -1,3 +1,19 @@
-extends layout
+extends layout0
 block content
+  link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
   p(style="font-size:24px;") Welcome , #{firstName}
+  br
+  p(style="font-size:24px;")= Message 
+  //-div(class="border w-75 border-secondary")=profile
+    
+      img(src= img1, style="width:200px;height:500px;") 
+      hr
+      p(style="font-size:24px;") #{firstName} , #{age}
+      br
+      div
+        img(src= "https://cdn3.iconfinder.com/data/icons/buildings-vol-1/72/08-512.png", style="width:20px;height:20px; float: left;" )
+        p(style="font-size:16px;") &nbsp; #{school}
+      br
+      p(style="font-size:22px;") &nbsp; Bio
+      p(style="font-size:16px;") &nbsp; #{bio}
+    //-  

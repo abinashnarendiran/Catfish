@@ -1,0 +1,64 @@
+extends layout0
+block content
+  
+  h1(align="center")=title
+  
+  div
+    b(style="font-size:24px;")= Message
+  
+  
+  form(action='/processUpdate/', 
+       method='post', 
+       class='form-horizontal')
+     
+    label(class='control-label col-md-2', for='firstName') First Name:
+    div(class='col-sm-10 form-group')
+     input(type='text',
+           id='firstName',
+           name='firstName',
+           placeholder='First Name',
+           class='form-control',
+           value= firstName)  
+                 
+    label(class='control-label col-md-2', for='lastName') Last Name:
+    div(class='col-sm-10 form-group')
+     input(type='text',
+           id='lastName',
+           name='lastName',
+           placeholder='Last Name',
+           class='form-control',
+           value= lastName)
+                 
+                    
+    label(class='control-label col-md-2', for='email') E-Mail:
+    div(class='col-sm-10 form-group')
+        input(type='text',
+              id='email',
+              name='email',
+              placeholder='E-Mail',
+              class='form-control',
+              value= email,
+              readonly="readonly")
+            
+                    
+    label(class='control-label col-md-2', for='school') School:
+    div(class='col-sm-10 form-group')
+      input(type='text',
+            id='school',
+            name='school',
+            class='form-control',
+            value= school)      
+    
+    label(class='control-label col-md-2', for='bio') Bio:
+    div(class='col-md-6 form-group')
+      textarea(rows="4",
+              cols="30",
+              type='text',
+              id='bio',
+              name='bio',
+              class='form-control',
+              maxlength="150") #{bio}    
+    
+
+    div(class='col-md-offset-1 col-md-1')
+      button(type='submit', class='btn btn-primary') Update

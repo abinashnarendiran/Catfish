@@ -2,20 +2,33 @@ extends layout
 
 block content
   link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
-  h1 #{title}
-  
+    
+  br
   //img(src = "https://www.iconshock.com/image/Stroke/Animals/catfish", align = "center")
-  div= button1
-    br
-    button(type = "button", class='btn btn-primary btn-md', id = "Facebook") Facebook
-  div= button2
-    br
-    a(href='/login/')
-      button(type = "button", class='btn btn-primary btn-md', id = "Email") Email
-  div= button3
-    br
-    a(href = '/register/')
-      button(type = "button", class='btn btn-primary btn-md', id = "Sign Up") Sign Up
+  div(class = "row")
+    img(class = "col-sm-6", src = "https://images.examples.com/wp-content/uploads/2017/03/Vintage-Music-Advertisement-Poster.jpg", style="width:50px;height:400px;")
+    p(class = "col-sm-6" , style="font-size:50px;") There's plenty of fish in the sea 
+      br
+      a(href='/login/')
+        button(type = "button", class=' col-md-15 text-center btn btn-primary btn-lg', id = "Facebook") Login with Facebook
+        br
+      a(href='/login/')
+        button(type = "button", class='col-md-15 text-center btn btn-primary btn-lg', id = "Email") Login with Email
+        br
+      a(href = '/register/')
+        button(type = "button", class=' btn btn-primary btn-lg', id = "Sign Up") Sign Up
+  //-  div(class = "col-md-15 text-center")= button1
+      br
+      button(type = "button", class='btn btn-primary btn-lg', id = "Facebook") Login with Facebook
+    div(class = "col-md-15 text-center")= button2
+      br
+      a(href='/login/')
+        button(type = "button", class='btn btn-primary btn-lg', id = "Email") Login with Email
+    div(class = "col-md-15 text-center")= button3
+      br
+      a(href = '/register/')
+        button(type = "button", class='btn btn-primary btn-lg', id = "Sign Up") Sign Up
+  //- 
 
 
         
