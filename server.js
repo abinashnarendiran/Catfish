@@ -244,10 +244,10 @@ app.post('/processUpdate/', function(request, response) {
                         function(error, numAffected) {
         if (error || numAffected != 1) {
           console.log('Unable to update student: ' + error);
-          response.render('profile_page', {firstName: firstName, Message: error});
+          response.redirect('/mainpage/');
         }
         else {
-          response.render('profile_page', {firstName: firstName});
+          response.redirect('/mainpage/');
         }
       });
     }
