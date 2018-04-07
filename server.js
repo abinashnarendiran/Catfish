@@ -63,22 +63,14 @@ var userSchema = new Schema({
 }, {collection: 'users'});
 var User = mongoose.model('user', userSchema);
 
-// Home Route
-/*
-app.get('/', function(req, res){
-  res.render('index', {
-    title:'Catfish'
-  });
-});
-*/
-//TODO: Fix home route to point to main page when user signed in
+
 // Home route while not signed-in
 app.get('/', function(req, res){
   res.render('login');
 });
 
 // Add Route
-app.get('/mainpage/', function(req,res){
+app.get('/main/', function(req,res){
   res.render('main_page', {
     firstName: 'First',
     lastName: 'Last',
