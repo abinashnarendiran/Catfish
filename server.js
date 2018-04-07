@@ -173,7 +173,7 @@ app.post('/processRegistration/', function(request, response) {
       response.render('register', {errorMessage: 'Unable to register user'});
     }
     else {
-      response.render('login', {errorMessage: ''});
+      response.render('profile_page', {firstName: doc.firstName});
     }
   });
 });
@@ -196,6 +196,16 @@ app.post('/processLogin/', function(request, response) {
         var user = User.findOne({email: email},  function(err, doc){
             response.render('profile_page', {firstName: doc.firstName});
         });
+
+        app.get('/settings/', function(request, response){
+          User.findOne({email: email},  function(err, doc){
+            response.render('settings', {firstName: doc.firstName,
+                                         lastName: doc.lastName,
+                                         email: doc.email,
+                                         bio: doc.bio,
+                                         errorMessage: ''});
+                                       });
+                                    });
       }
       else{
         response.render('login', {errorMessage: 'Password Incorrect. Please try again.'});
@@ -204,8 +214,49 @@ app.post('/processLogin/', function(request, response) {
   });
 });
 
+/*
 app.get('/settings/', function(request, response) {
   response.render('settings', {errorMessage: ''});
+});
+
+*/
+
+app.post('/processUpdate/', function(request, response) {
+  var firstName = request.body.firstName;
+  var lastName = request.body.lastName
+  var email = request.body.email;
+  var bio = request.body.bio;
+
+  var userData = {firstName: firstName,
+                  lastName: lastName,
+                  bio: bio
+                };
+
+    User.find({email: email}).then(function(results) {
+    if (results.length > 0) {
+        User.update({email: email},
+                        userData,
+                        {multi: false},
+                        function(error, numAffected) {
+        if (error || numAffected != 1) {
+          console.log('Unable to update student: ' + error);
+          response.redirect("/main");
+        }
+        else {
+        response.redirect("/main");
+        }
+      });
+    }
+
+    else {
+      response.redirect('/');
+    }
+  });
+});
+
+
+app.get('/logout/', function(request, response) {
+  response.redirect('/');
 });
 
 // Start server
