@@ -4,6 +4,7 @@ block content
     .col-7(style='padding-top: 2em;')
     .col-5(style='padding-top: 15%;')
       .card(style='height: 130%;').align-items-center
+        #alert-error(class='alert') #{errorMessage}
         .row.my-auto
           .card-body
             h4.card-title Already a user?
@@ -32,7 +33,12 @@ block content
               div(class='text-center')
                 button(type='submit', class='btn btn-primary') Log In
                 a(style='padding-left: 1em;', href='/register/') Not a user? Register today
-                
   
-    br
-    div= errorMessage
+  script(src='/bower_components/jquery/dist/jquery.js')
+  script.
+    console.log($('#alert-error')[0].innerText)
+    $(function(){
+      if ($('#alert-error')[0].innerText != "") {
+        $('#alert-error').addClass('alert-danger');
+      } 
+    });

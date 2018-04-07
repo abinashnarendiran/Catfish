@@ -4,6 +4,7 @@ block content
     .col-7(style='padding-top: 2em;')
     .col-5(style='padding-top: 10%;')
       .card.align-items-center
+        #alert-error(class='alert') #{errorMessage}
         .row.my-auto
           .card-body(style='margin-right: 10%; margin-left: 10%;')
             div= errorMessage
@@ -68,5 +69,15 @@ block content
                         name='bio',
                         class='form-control')      
                       
-
-            button(type='submit', class='btn btn-primary') Sign Up
+            div(class='text-center')
+              button(type='submit', class='btn btn-primary') Sign Up
+              a(style='padding-left: 1em;', href='/login/') Already a user? Log in
+              
+  script(src='/bower_components/jquery/dist/jquery.js')
+  script.
+    console.log($('#alert-error')[0].innerText)
+    $(function(){
+      if ($('#alert-error')[0].innerText != "") {
+        $('#alert-error').addClass('alert-danger');
+      } 
+    });
