@@ -96,7 +96,7 @@ app.get('/contact/', function(req,res){
 
 
 app.get('/register/', function(request, response) {
-  response.render('register', {title: 'Register'});
+  response.render('register');
 });
 
 app.post('/processRegistration/', function(request, response) {
@@ -119,11 +119,10 @@ app.post('/processRegistration/', function(request, response) {
   newUser.save(function(error) {
     if (error) {
       console.log('Unable to register: ' + error);
-      response.render('register', {errorMessage: 'Unable to register user.'});
+      response.render('register', {errorMessage: 'Unable to register user'});
     }
     else {
-      response.render('login', {title: 'Please Log In',
-                                errorMessage: ''});
+      response.render('login', {errorMessage: ''});
     }
   });
 });
@@ -138,8 +137,7 @@ app.post('/processLogin/', function(request, response) {
   User.find({email: email}).then(function(results) {
     if (results.length == 0) {
       // Login failed
-      response.render('login', {title: 'Please Log In',
-                                          errorMessage: 'Email does not exist'});
+      response.render('login', {errorMessage: 'Sorry, email provided does not exist'});
     }
     else {
       // login success
@@ -147,12 +145,9 @@ app.post('/processLogin/', function(request, response) {
         var user = User.findOne({email: email},  function(err, doc){
             response.render('profile_page', {firstName: doc.firstName});
         });
-
       }
-
       else{
-        response.render('login', {title: 'Please Log In',
-                                            errorMessage: 'Password Incorrect'});
+        response.render('login', {errorMessage: 'Password Incorrect. Please try again.'});
       }
     }
   });
