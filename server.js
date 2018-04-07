@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -7,7 +6,9 @@ const bcrypt = require('bcrypt-nodejs');
 const assert = require('assert');
 const uuid = require('uuid/v1');
 const session = require('express-session');
+const nodemailer = require('nodemailer');
 
+const app = express();
 
 mongoose.connect('mongodb://localhost/catfishdb');
 var db = mongoose.connection;
@@ -94,6 +95,56 @@ app.get('/contact/', function(req,res){
   });
 });
 
+// POST route from contact form
+app.post('/processContact/', function (request, response) {
+  var email = request.body.email;
+  var name = request.body.name;
+  var message = request.body.message;
+  let mailOpts, smtpTrans;
+
+  smtpTrans = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'teamcatfish3230@gmail.com',
+      pass: 'password3230!'
+    }
+  });
+
+  mailOpts = {
+    from: request.body.name + ' &lt;' + request.body.email + '&gt;',
+    to: 'teamcatfish3230@gmail.com',
+    subject: 'Catfish Contact Form',
+    text: `${request.body.name} (${request.body.email}) says: ${request.body.message}`
+  };
+
+  mailOptsUser = {
+    from: 'teamcatfish3230@gmail.com',
+    to: request.body.email,
+    subject: 'Thank you for contacting team Catfish',
+    text: 'Thank you for contacting Catfish'
+  };
+
+  smtpTrans.sendMail(mailOpts, function (error, response) {
+    if (error) {
+      console.log(error)
+    }
+    else {
+      console.log('Email sent to team Catfish')
+    }
+  });
+
+  smtpTrans.sendMail(mailOptsUser, function (error, response) {
+    if (error) {
+      console.log(error)
+    }
+    else {
+      console.log('Email sent to user')
+    }
+  });
+  response.redirect('/');
+});
 
 app.get('/register/', function(request, response) {
   response.render('register');
