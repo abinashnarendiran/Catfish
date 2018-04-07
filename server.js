@@ -153,6 +153,10 @@ app.post('/processLogin/', function(request, response) {
   });
 });
 
+app.get('/settings/', function(request, response) {
+  response.render('settings', {errorMessage: ''});
+});
+
 // Start server
 app.listen(3000, function(){
   console.log('Server started on port 3000');
