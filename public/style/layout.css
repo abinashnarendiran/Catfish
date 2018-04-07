@@ -1,0 +1,7 @@
+#map-canvas {
+  display: none;
+  width: 400px;
+  height: 400px;
+  margin: 10px 0 10px 0;
+  float: left;
+}

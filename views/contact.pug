@@ -1,29 +1,43 @@
 extends layout
 
 block content
+  br
   h1 #{title}
-  form(action='/processContact/', method='post', class='form-horizontal')
-    label(class='control-label', for='name') Name:
-    div(class='form-group')
-      input(type='text',
-            id='name',
-            name='name',
-            placeholder='Name',
-            class='form-control')
-    label(class='control-label', for='email') Email:
-    div(class='form-group')
-      input(type='text',
-            id='email',
-            name='email',
-            placeholder='Email',
-            class='form-control')
-    label(class='control-label', for='message') Message:
-    div(class='form-group')
-      input(type='text',
-            id='message',
-            name='message',
-            placeholder='Message',
-            class='form-control')
-  
-    div(class='text-center')
-      button(type='submit', class='btn btn-primary') Submit
+  br
+  main(role='main')
+  // Wrap the rest of the page in another container to center all the content.
+  .container.marketing
+    // Three columns of text below the carousel
+    .row
+      .col-lg-6
+        form(action='/processContact/', method='post', class='form-horizontal')
+          label(class='control-label', for='name') Name:
+          div(class='form-group')
+            input(type='text',
+                  id='name',
+                  name='name',
+                  placeholder='Name',
+                  class='form-control')
+          label(class='control-label', for='email') Email:
+          div(class='form-group')
+            input(type='text',
+                  id='email',
+                  name='email',
+                  placeholder='Email',
+                  class='form-control')
+          label(class='control-label', for='message') Message:
+          div(class='form-group')
+            input(type='text',
+                  id='message',
+                  name='message',
+                  placeholder='Message',
+                  class='form-control')
+        
+          div(class='text-center')
+            button(type='submit', class='btn btn-primary') Submit
+      // /.col-lg-6
+      .col-lg-6
+        #map-canvas  
+      // /.col-lg-6
+    // /.row
+  // /.container
