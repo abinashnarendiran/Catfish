@@ -1,0 +1,96 @@
+/*
+  Birdie-fish CSS animation base sourced from https://codepen.io/McQuinTrix/pen/vGeOVy?page=6a
+  courtesy of Harshal Carpenter (@McQuinTrix)
+*/
+body{
+  background: #2196F3;
+  color: white;
+}
+
+@keyframes bg{
+  0%{
+    background-position: 0% 0%;
+  }
+  100%{
+    background-position: -9000% 0%;
+  }
+}
+
+#birdie-body{
+  background-color: rgba(255,100,100,1);
+  border-radius: 5px;
+  height: 100px;
+  width: 150px;
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 75px);
+
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.7));
+  filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.7));
+}
+
+#wing1{
+  width: 0;
+	height: 0;
+	border-left: 0px solid transparent;
+	border-right: 50px solid transparent;
+
+	border-top: 40px solid rgba(255,30,30,1);
+  transform: rotateZ(-90deg);
+
+  position:absolute;
+  top: 10px;
+  left: 40px;
+
+  animation: flapping 0.3s infinite;
+
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.3));
+  filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.3));
+}
+
+@keyframes flapping{
+  0%,100%{
+    transform: rotateZ(-90deg) rotateY(40deg);
+    top: 10px;
+  }
+  50%{
+    transform: rotateZ(-90deg) rotateY(160deg);
+    top: 55px;
+  }
+}
+
+#eye{
+  background-color: white;
+  background-image: radial-gradient(circle, black, black 40%, transparent 10%);
+  border-radius: 50%;
+  position:absolute;
+  right: 10px;
+  top: 10px;
+
+  height: 20px;
+  width: 20px;
+}
+
+#birdie-body:before{
+  content: "";
+  background-image: linear-gradient(to bottom, rgba(255,100,100,1), rgba(255,100,100,1) 33%, transparent 33%, transparent 66%, rgba(255,100,100,1) 66%);
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  bottom: 20px;
+}
+
+#birdie-body:after{
+  content: "";
+  width: 0;
+	height: 0;
+	border-left: 30px solid transparent;
+	border-right: 0px solid transparent;
+
+	border-top: 20px solid rgba(255,30,30,1);
+
+  position: absolute;
+  top: 10px;
+  left: -30px;
+}
