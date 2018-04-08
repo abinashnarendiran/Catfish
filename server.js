@@ -196,7 +196,6 @@ app.post('/processLogin/', function(request, response) {
         var user = User.findOne({email: email},  function(err, doc){
             response.render('profile_page', {firstName: doc.firstName});
         });
-
         app.get('/settings/', function(request, response){
           User.findOne({email: email},  function(err, doc){
             response.render('settings', {firstName: doc.firstName,
@@ -204,9 +203,9 @@ app.post('/processLogin/', function(request, response) {
                                          email: doc.email,
                                          bio: doc.bio,
                                          errorMessage: ''});
-                                       });
-                                    });
-      }
+                });
+            });
+          }
       else{
         response.render('login', {errorMessage: 'Password Incorrect. Please try again.'});
       }
