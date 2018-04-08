@@ -173,7 +173,7 @@ app.post('/processRegistration/', function(request, response) {
       response.render('register', {errorMessage: 'Unable to register user'});
     }
     else {
-      response.render('profile_page', {firstName: doc.firstName});
+      response.redirect('/');
     }
   });
 });
@@ -249,7 +249,7 @@ app.post('/processUpdate/', function(request, response) {
     }
 
     else {
-      response.redirect('/');
+      response.render('login', {errorMessage: "No email was found when updating profile"});
     }
   });
 });
