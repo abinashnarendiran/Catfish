@@ -6,10 +6,15 @@ html
     script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBibSB5MhcKpOFhvqDanwhhaJslEjU8q0I')
     script(type='text/javascript', src='/scripts/layout.js')
     link(rel='stylesheet', href='/style/layout.css')
-  body
+    link(rel='stylesheet' href='/style/birdie.css')
+  body(style='background:white; color:black')
     nav.navbar.navbar-expand-md.navbar-dark.bg-primary
       .container
         a.navbar-brand(href='/') Catfish
+        .container
+          #birdie-body(style='top:10px')
+            #eye 
+            #wing1
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarsExampleDefault.collapse.navbar-collapse
