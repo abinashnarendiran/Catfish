@@ -1,15 +1,17 @@
 extends layout
 block content
   .row
-    .col-7(style='padding-top: 2em;')
-      .container.text-center(style='padding-top: 35%')
-        h2 "There's plenty of fish in the sea...
-        h3 meet your Catfish today."
-    .col-5(style='padding-top: 15%;')
-      .card(style='height: 130%;').align-items-center
+    .col-7(style='padding-top: 5%')
+      img.featurette-image.img-fluid.mx-auto(src='/images/couples/couple4.jpg', alt='Generic placeholder image', height='500px')
+    .col-5(style='padding-top: 5%;')
+      .card(style='height: 0%;').align-items-center
         #alert-error(class='alert') #{errorMessage}
         .row.my-auto
           .card-body
+            .container.text-center(style='padding-top: 1%')
+              h1 "There's plenty of fish in the sea...
+              h2 Meet your Catfish today."
+            br
             h4.card-title Already a user?
 
             form(action='/processLogin/',
@@ -36,6 +38,47 @@ block content
               div(class='text-center')
                 button(type='submit', class='btn btn-primary') Log In
                 a(style='padding-left: 1em;', href='/register/') Not a user? Register today
+  br
+  hr.featurette-divider
+  .row.featurette
+    .col-md-5
+      img.featurette-image.img-fluid.mx-auto(src='/images/couples/couple1.jpg', alt='Generic placeholder image')
+    .col-md-7
+      h2.featurette-heading
+        | If they hit like too then...
+        br
+        br
+        span.text-muted It's a Match!
+        br
+      p.lead
+        | At Catfish we are focused on transitioning the industry to predictive maintenance. Basically identifying what you need to be in a relationship suitable for you. It's such a simple concept but the impact has market changing implications.
+  hr.featurette-divider
+  .row.featurette
+    .col-md-7.push-md-5
+      h2.featurette-heading
+        | Oh yeah, it's that good. 
+        br
+        br  
+        span.text-muted See for yourself.
+        br
+      p.lead
+        | We are a passionate and motivated team dedicated to disrupting the dating industry. For years the industry has performed subpar service reactively, by connecting couples after they have had no luck. When was the last time you used a dating service without any luck?
+    .col-md-5.pull-md-7
+      img.featurette-image.img-fluid.mx-auto(src='/images/couples/couple2.jpg', alt='Generic placeholder image')
+  hr.featurette-divider
+  .row.featurette
+    .col-md-5
+      img.featurette-image.img-fluid.mx-auto(src='/images/couples/couple3.jpg', alt='Generic placeholder image')
+    .col-md-7
+      h2.featurette-heading
+        | Only people you've matched with can contact you. 
+        br
+        br
+        span.text-muted Checkmate.
+        br
+      p.lead
+        | What this means is mitigating relationship breakdowns, hazardous communications, future quality dates, environmental impact and a better dating experience. The sum of this impact eludes to ZERO in cost for the individual as we are non-profit.
+  hr.featurette-divider
   
   script(src='/bower_components/jquery/dist/jquery.js')
   script.
