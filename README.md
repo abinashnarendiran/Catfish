@@ -24,6 +24,10 @@ Run app
 $ npm start
 ```
 
+#### Test user
+Username: spongebob@squarepants.com
+Password: password
+
 #### Contributers
 Adwan Syed,
 Abinash Narendiran,
