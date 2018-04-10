@@ -150,8 +150,7 @@ app.post('/main', function(req, res) {
   }
   else {
     // Out of matches
-    res.render('main_page', {errorMessage: 'Sorry. All out of matches',
-  firstName: 'Out of matches'});
+    res.render('main_page', {errorMessage: 'Sorry. All out of matches');
   }
 });
 
