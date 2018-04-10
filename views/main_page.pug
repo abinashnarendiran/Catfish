@@ -1,30 +1,29 @@
 extends layout-signedin
 
 block content
-  h1 #{title}
+  #alert-error(class='alert') #{errorMessage}
   .container
     .row
-      .col-8 
-        .card(style='')
-          img.card-img-top(src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16291a37fad%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16291a37fad%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2299.1328125%22%20y%3D%2296.3%22%3ECatfish%20Image%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', alt='Catfish profile picture')
+      .col-8.mx-auto 
+        #card.card(style='')
+          img.card-img-top(src='https://picsum.photos/700/450?random', alt='Catfish profile picture')
           .card-body
             h5.card-title #{firstName} #{lastName}, #{age}
             h6.card-subtitle.mb-2.text-muted #{location}
             p.card-text #{bio}
-            .card-text-center
-              a.btn.btn-primary(href='#Like') Like
-              a.btn.btn-danger(href='#Like') Dislike
-      .col-4 Chat
-        .card(style='')
-          ul.list-group.list-group-flush
-            li.list-group-item
-              img.media-object(src=src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==") 
-              h6 Fishy Catfish
-                span.badge.badge-primary.badge-pill 3
-            li.list-group-item 
-              h6 Smelly Catfish
-                span.badge.badge-primary.badge-pill 9
-            li.list-group-item 
-              h6 Swimmy Catfish
-                span.badge.badge-primary.badge-pill 1
+            .container.text-center
+              form(action='/main/',
+                   method='post',
+                   class='form-horizontal')
+                   button.btn.btn-primary(type='submit', name='vote', value='like') Like
+                   button.btn.btn-danger(type='submit', name='vote', value='dislike') Dislike
+    
+  script(src='/bower_components/jquery/dist/jquery.js')
+  script.
+    $(function(){
+      if ($('#alert-error')[0].innerText != "") {
+        $('#alert-error').addClass('alert-warning text-center');
+        $(':button').prop('disabled', true);
+      } 
+    });
           

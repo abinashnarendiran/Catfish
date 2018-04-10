@@ -70,16 +70,91 @@ app.get('/', function(req, res){
   res.render('login');
 });
 
+// userList
+var userList = [];
+var currentUser;
+var currentCard;
+
+
 // Add Route
-app.get('/main/', function(req,res){
-  res.render('main_page', {
-    firstName: 'First',
-    lastName: 'Last',
-    age: '20',
-    location: 'Durham Region',
-    bio: 'Love swimming, can breathe underwater. Totally not a catfish.'
+app.get('/main', function(req, res) {
+  User.find({}, function(err, users) {
+    if(err) {
+      console.log(err, "Error getting users from db")
+    } else {
+      // Populate users
+      var today = new Date();
+      for(var i in users){
+        var birthDate = new Date(users[i].birthDate);
+        var userAge = today.getFullYear() - birthDate.getFullYear();
+        userList.push({firstName: users[i].firstName,
+                       lastName : users[i].lastName,
+                       gender: users[i].gender,
+                       age: userAge,
+                       bio: users[i].bio,
+                       email: users[i].email});
+      }
+      //
+      currentCard = userList.pop();
+      res.render('main_page', {firstName: currentCard.firstName,
+                     lastName : currentCard.lastName,
+                     gender: currentCard.gender,
+                     age: currentCard.age,
+                     bio: currentCard.bio,
+                     location: 'Durham Region'});
+    }
   });
 });
+
+// POST route for like/Dislike
+app.post('/main', function(req, res) {
+  var vote = req.body.vote;
+  if(vote == 'dislike') {
+    console.log(currentUser.firstName,'dislikes', currentCard.firstName);
+  }
+  else if (vote == 'like') {
+    console.log(currentUser.firstName,'likes', currentCard.firstName);
+    // Link both parties by email
+    let smtpTrans = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+        user: 'teamcatfish3230@gmail.com',
+        pass: 'password3230!'
+      }
+    });
+    mailLiked = {
+      from: currentUser.email,
+      to: currentCard.email,
+      subject: 'Catfish: Someone likes you!',
+      text: "Hey, you matched with me on Catfish. Let's talk!"
+    };
+    smtpTrans.sendMail(mailLiked, function (error, response) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        console.log(currentUser.firstName, 'emailed', currentCard.firstName);
+      }
+    });
+  }
+  if (userList.length > 0) {
+    var user = userList.pop();
+    res.render('main_page', {firstName: user.firstName,
+                   lastName : user.lastName,
+                   gender: user.gender,
+                   age: user.age,
+                   bio: user.bio,
+                   location: 'Durham Region'});
+  }
+  else {
+    // Out of matches
+    res.render('main_page', {errorMessage: 'Sorry. All out of matches',
+  firstName: 'Out of matches'});
+  }
+});
+
 
 // Add Route
 app.get('/about/', function(req,res){
@@ -158,8 +233,9 @@ app.post('/processRegistration/', function(request, response) {
   var hashedPassword = bcrypt.hashSync(password);
   var bio = request.body.bio;
   var gender = request.body.gender;
-  var birthDatewithTime =  new Date(request.body.birthDate);
-  var birth = birthDatewithTime.toDateString();
+  //var birthDatewithTime =  new Date(request.body.birthDate);
+  //var birth = birthDatewithTime.toDateString();
+  var birth = request.body.birthDate;
   var newUser = new User({firstName: firstName,
                           lastName: lastName,
                           email: email,
@@ -195,6 +271,10 @@ app.post('/processLogin/', function(request, response) {
       if (bcrypt.compareSync(password, results[0].hashedPassword)) {
         var user = User.findOne({email: email},  function(err, doc){
             response.render('profile_page', {firstName: doc.firstName});
+            // set session
+            //request.session.userFirst = doc.firstName;
+            //request.session.email = doc.email;
+            currentUser = {firstName: doc.firstName, lastName: doc.lastName, email: doc.email};
         });
         app.get('/settings/', function(request, response){
           User.findOne({email: email},  function(err, doc){
