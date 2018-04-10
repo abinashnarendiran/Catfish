@@ -26,6 +26,7 @@ $ npm start
 
 #### Test user
 Username: spongebob@squarepants.com
+<br>
 Password: password
 
 #### Contributers
