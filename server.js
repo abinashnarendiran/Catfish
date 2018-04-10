@@ -255,7 +255,16 @@ app.post('/processUpdate/', function(request, response) {
 
 
 app.get('/logout/', function(request, response) {
-  response.redirect('/');
+  if (request.session) {
+    // delete session object
+    request.session.destroy(function(error) {
+      if(error) {
+        return next(error);
+      } else {
+        return response.redirect('/');
+      }
+    });
+  }
 });
 
 // Start server
